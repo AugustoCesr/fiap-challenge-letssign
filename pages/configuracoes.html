@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Configurações - LetsSign</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/configuracoes.css" />
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <a href="dashboard.html" class="text-2xl font-semibold">
+            <span class="text-purple-700">LetsSign</span>
+            <span class="text-sm text-gray-600 ml-2">é simples assinar</span>
+          </a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="flex items-center text-gray-700 hover:text-purple-700">
+            <i class="fas fa-user mr-2"></i>
+            <span>Perfil</span>
+          </button>
+          <button class="text-gray-700 hover:text-purple-700">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20 min-h-screen">
+    <div class="container mx-auto px-4 max-w-3xl py-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Configurações</h2>
+      <form class="bg-white rounded-xl shadow-sm p-8 space-y-6">
+        <!-- Notificações -->
+        <div class="p-6 border rounded-lg shadow-sm">
+          <label class="flex items-center space-x-4">
+            <input type="checkbox" class="checkbox-formulario" />
+            <span class="text-lg font-semibold">Receber notificações por e-mail</span>
+          </label>
+          <p class="text-gray-600 mt-2">Ative para receber notificações importantes e atualizações por e-mail.</p>
+        </div>
+
+        <!-- Método Padrão de Autenticação -->
+        <div class="p-6 border rounded-lg shadow-sm">
+          <p class="font-semibold mb-4 text-lg">Método Padrão de Autenticação</p>
+          <label class="flex items-center space-x-4 mb-3 cursor-pointer">
+            <input type="radio" name="metodo-padrao" class="checkbox-formulario" />
+            <i class="fas fa-user text-purple-700 text-xl"></i>
+            <span>Reconhecimento Facial</span>
+          </label>
+          <label class="flex items-center space-x-4 mb-3 cursor-pointer">
+            <input type="radio" name="metodo-padrao" class="checkbox-formulario" />
+            <i class="fas fa-microphone text-purple-700 text-xl"></i>
+            <span>Reconhecimento de Voz</span>
+          </label>
+          <label class="flex items-center space-x-4 mb-3 cursor-pointer">
+            <input type="radio" name="metodo-padrao" class="checkbox-formulario" />
+            <i class="fas fa-map-marker-alt text-purple-700 text-xl"></i>
+            <span>Geolocalização</span>
+          </label>
+          <label class="flex items-center space-x-4 cursor-pointer">
+            <input type="radio" name="metodo-padrao" class="checkbox-formulario" />
+            <i class="fas fa-network-wired text-purple-700 text-xl"></i>
+            <span>Captura de IP</span>
+          </label>
+        </div>
+
+        <!-- Idioma -->
+        <div class="p-6 border rounded-lg shadow-sm">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Idioma</label>
+          <select class="entrada-personalizada w-full">
+            <option value="pt" selected>Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+          </select>
+        </div>
+
+        <button type="submit" class="botao-primario-personalizado w-full py-3 font-semibold hover:bg-purple-800 transition-colors">
+          Salvar Configurações
+        </button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

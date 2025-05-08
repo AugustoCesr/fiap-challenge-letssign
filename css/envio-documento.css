@@ -1,0 +1,270 @@
+/* Estilos da página de envio de documento */
+
+/* Layout principal */
+.conteudo-principal {
+    margin-left: 16rem;
+    padding-top: 4rem;
+    min-height: 100vh;
+    background-color: #f9fafb;
+}
+
+/* Cabeçalho */
+.cabecalho-fixo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    z-index: 1050;
+}
+
+.cabecalho-conteudo {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Barra lateral */
+.barra-lateral {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    width: 16rem;
+    height: calc(100vh - 4rem);
+    background-color: white;
+    box-shadow: 1px 0 2px rgba(0,0,0,0.05);
+    z-index: 1040;
+}
+
+.menu-lateral {
+    padding-top: 1.5rem;
+}
+
+.link-menu {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link-menu i {
+    margin-right: 0.75rem;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.link-menu:hover {
+    background-color: #f5f3ff;
+    color: #6b21a8;
+}
+
+.link-menu.ativo {
+    background-color: #f5f3ff;
+    color: #6b21a8;
+}
+
+/* Container principal */
+.container-principal {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.titulo-pagina {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+/* Área de upload */
+.cartao-upload {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.area-upload {
+    border: 2px dashed #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.area-upload:hover {
+    border-color: #6b21a8;
+    background-color: #f5f3ff;
+}
+
+.icone-upload {
+    font-size: 2.5rem;
+    color: #6b21a8;
+    margin-bottom: 1rem;
+}
+
+.texto-upload {
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.texto-upload-destaque {
+    color: #6b21a8;
+    font-weight: 500;
+}
+
+.texto-limite {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Formulário */
+.cartao-formulario {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.titulo-secao {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.grupo-campo {
+    margin-bottom: 1rem;
+}
+
+.rotulo-campo {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.entrada-personalizada {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.entrada-personalizada:focus {
+    border-color: #6b21a8;
+    box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.1);
+    outline: none;
+}
+
+/* Grid de endereço */
+.grid-endereco {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid-endereco {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Métodos de autenticação */
+.cartao-metodo {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cartao-metodo:hover {
+    background-color: #f9fafb;
+    border-color: #6b21a8;
+}
+
+.cartao-metodo input[type="radio"] {
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.info-metodo {
+    flex: 1;
+}
+
+.titulo-metodo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.titulo-metodo i {
+    color: #6b21a8;
+}
+
+.descricao-metodo {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 1.75rem;
+}
+
+/* Botão de envio */
+.botao-enviar {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: #6b21a8;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.botao-enviar:hover {
+    background-color: #581c87;
+    transform: translateY(-1px);
+}
+
+.botao-enviar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-principal {
+        margin-left: 0;
+    }
+
+    .barra-lateral {
+        display: none;
+    }
+
+    .cartao-upload,
+    .cartao-formulario {
+        padding: 1.5rem;
+    }
+}

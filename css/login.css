@@ -1,0 +1,203 @@
+/* Estilos da página de login */
+
+/* Container principal */
+.pagina-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+}
+
+.container-conteudo {
+    width: 100%;
+    max-width: 28rem;
+}
+
+/* Logo */
+.container-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.texto-logo {
+    font-size: 1.875rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.texto-tagline {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-left: 0.5rem;
+}
+
+/* Cartão de login */
+.cartao-login {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.titulo-login {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+/* Campos do formulário */
+.grupo-campo {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.rotulo-campo {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.container-entrada {
+    position: relative;
+}
+
+.icone-campo {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.entrada-personalizada {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.entrada-personalizada:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 3px rgba(92, 51, 207, 0.1);
+    outline: none;
+}
+
+/* Botão mostrar senha */
+.alternar-senha {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.alternar-senha:hover {
+    color: #6b7280;
+}
+
+/* Checkbox personalizado */
+.container-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-formulario {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+    margin-right: 0.5rem;
+    accent-color: var(--primary-purple);
+}
+
+/* Links */
+.link-roxo {
+    color: var(--primary-purple);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link-roxo:hover {
+    color: #4c2ba9;
+}
+
+/* Divisor */
+.divisor {
+    position: relative;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.divisor::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+}
+
+.texto-divisor {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.5rem;
+    background: white;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* Botões de login social */
+.container-social {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.botao-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    color: #4b5563;
+    transition: all 0.2s;
+    background: none;
+}
+
+.botao-social:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* Rodapé */
+.texto-rodape {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    .cartao-login {
+        padding: 1.5rem;
+    }
+
+    .titulo-login {
+        font-size: 1.25rem;
+    }
+}

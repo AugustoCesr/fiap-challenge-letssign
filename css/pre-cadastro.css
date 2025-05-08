@@ -1,0 +1,242 @@
+/* Estilos específicos do pré-cadastro */
+
+/* Animação da barra de progresso */
+.barra-progresso {
+    transition: width 0.6s ease;
+}
+
+/* Caixas de upload */
+.caixa-upload {
+    transition: all 0.3s ease;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(92, 51, 207, 0.02);
+}
+
+.caixa-upload:hover {
+    background-color: rgba(92, 51, 207, 0.05);
+}
+
+.caixa-upload.tem-arquivo {
+    border-style: solid;
+    border-color: var(--primary-purple);
+    background-color: rgba(92, 51, 207, 0.05);
+}
+
+/* Caixas de câmera e voz */
+.caixa-camera, .caixa-voz {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 0.75rem;
+}
+
+.caixa-camera:hover, .caixa-voz:hover {
+    background-color: rgba(92, 51, 207, 0.05);
+}
+
+/* Contêineres de pré-visualização */
+.container-preview {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    display: none;
+}
+
+.container-preview.ativo {
+    display: block;
+}
+
+.container-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-preview .remover-preview {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.container-preview .remover-preview:hover {
+    background: rgb(239, 68, 68);
+    transform: scale(1.1);
+}
+
+/* Animação de gravação */
+@keyframes pulso-gravacao {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.gravando .fa-microphone {
+    color: #EF4444;
+    animation: pulso-gravacao 1.5s infinite;
+}
+
+/* Animações das seções do formulário */
+.secao-formulario {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.secao-formulario:nth-child(1) { animation-delay: 0.1s; }
+.secao-formulario:nth-child(2) { animation-delay: 0.2s; }
+.secao-formulario:nth-child(3) { animation-delay: 0.3s; }
+.secao-formulario:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilização do select personalizado */
+select.entrada-personalizada {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* Estilos de dica */
+.dica {
+    position: relative;
+}
+
+.dica:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    background-color: #1F2937;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Estilos de preview da câmera */
+.preview-camera {
+    width: 100%;
+    height: 180px;
+    background-color: #000;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: none;
+}
+
+.preview-camera.ativo {
+    display: block;
+}
+
+/* Visualização da gravação de voz */
+.visualizacao-voz {
+    width: 100%;
+    height: 60px;
+    background-color: #F3F4F6;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: none;
+}
+
+.visualizacao-voz.ativo {
+    display: block;
+}
+
+.barras-voz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 2px;
+}
+
+.barra-voz {
+    width: 3px;
+    background-color: var(--primary-purple);
+    height: 20px;
+    transition: height 0.1s ease;
+}
+
+/* Estados de carregamento */
+.carregando {
+    position: relative;
+    pointer-events: none;
+}
+
+.carregando::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+}
+
+.carregando::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .caixa-camera, .caixa-voz {
+        min-height: 140px;
+    }
+
+    .caixa-upload {
+        min-height: 120px;
+    }
+
+    .container-preview {
+        height: 140px;
+    }
+}

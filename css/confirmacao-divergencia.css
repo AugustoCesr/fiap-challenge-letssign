@@ -1,0 +1,198 @@
+/* Estilos da página de confirmação de divergência */
+
+/* Layout principal */
+.pagina-confirmacao {
+  padding-top: 5rem;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Cabeçalho */
+.cabecalho-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  z-index: 1050;
+}
+
+.cabecalho-conteudo {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.texto-marca {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.texto-tagline {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-left: 0.5rem;
+}
+
+/* Botões do cabeçalho */
+.botao-menu {
+  color: #374151;
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.botao-menu:hover {
+  color: var(--primary-purple);
+}
+
+/* Container principal */
+.container-principal {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.titulo-pagina {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+/* Cartão de confirmação */
+.cartao-confirmacao {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Seções */
+.secao-detalhes {
+  margin-bottom: 1.5rem;
+}
+
+.titulo-secao {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.info-documento {
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.info-documento strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Lista de divergências */
+.lista-divergencias {
+  list-style-type: disc;
+  list-style-position: inside;
+  color: #dc2626;
+  margin: 0.5rem 0;
+}
+
+.lista-divergencias li {
+  margin-bottom: 0.5rem;
+}
+
+/* Campo de comentários */
+.rotulo-campo {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.entrada-comentario {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  min-height: 6rem;
+  transition: all 0.2s ease;
+}
+
+.entrada-comentario:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(92, 51, 207, 0.1);
+  outline: none;
+}
+
+/* Botões de ação */
+.container-botoes {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.botao-acao {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.botao-aprovar {
+  background-color: #059669;
+  color: white;
+}
+
+.botao-aprovar:hover {
+  background-color: #047857;
+  transform: translateY(-1px);
+}
+
+.botao-rejeitar {
+  background-color: #dc2626;
+  color: white;
+}
+
+.botao-rejeitar:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .cartao-confirmacao {
+      padding: 1.5rem;
+  }
+
+  .container-botoes {
+      flex-direction: column;
+  }
+
+  .botao-acao {
+      width: 100%;
+  }
+}

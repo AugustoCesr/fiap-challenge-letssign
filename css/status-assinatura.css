@@ -1,0 +1,265 @@
+/* Estilos da página de status de assinatura */
+
+/* Layout principal */
+.pagina-status {
+    padding-top: 5rem;
+    min-height: 100vh;
+    background-color: var(--background-light);
+}
+
+/* Container principal */
+.container-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Cabeçalho da página */
+.cabecalho-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-pagina {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin: 0;
+}
+
+/* Botão novo documento */
+.botao-novo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--primary-purple);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.botao-novo:hover {
+    background-color: var(--primary-purple-dark);
+    transform: translateY(-1px);
+    color: white;
+}
+
+.botao-novo i {
+    font-size: 0.875rem;
+}
+
+/* Container de filtros */
+.container-filtro {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.grid-filtros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.grupo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Tabela de documentos */
+.container-tabela {
+    background: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.tabela-documentos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-documentos th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--muted-text);
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabela-documentos td {
+    padding: 1rem 1.5rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Células da tabela */
+.celula-documento {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.icone-documento {
+    color: var(--primary-purple);
+    font-size: 1.25rem;
+}
+
+.info-documento {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nome-documento {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--primary-text);
+}
+
+.tamanho-documento {
+    font-size: 0.75rem;
+    color: var(--muted-text);
+}
+
+/* Status badges */
+.emblema-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-pendente {
+    background-color: var(--status-pending-bg);
+    color: var(--status-pending);
+}
+
+.status-andamento {
+    background-color: var(--status-progress-bg);
+    color: var(--status-progress);
+}
+
+.status-concluido {
+    background-color: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.status-rejeitado {
+    background-color: var(--status-error-bg);
+    color: var(--status-error);
+}
+
+/* Botões de ação */
+.container-acoes {
+    display: flex;
+    gap: 1rem;
+}
+
+.botao-acao {
+    background: none;
+    border: none;
+    padding: 0.375rem;
+    font-size: 1rem;
+    color: var(--muted-text);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0.375rem;
+}
+
+.botao-acao:hover {
+    color: var(--primary-purple);
+    background-color: var(--primary-purple-light);
+}
+
+.botao-acao.excluir:hover {
+    color: var(--status-error);
+    background-color: var(--status-error-bg);
+}
+
+/* Paginação */
+.container-paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: white;
+}
+
+.info-paginacao {
+    font-size: 0.875rem;
+    color: var(--secondary-text);
+}
+
+.navegacao-paginacao {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.botao-paginacao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    color: var(--secondary-text);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    border-radius: 0.375rem;
+}
+
+.botao-paginacao:hover {
+    background-color: var(--background-light);
+    border-color: var(--border-color-hover);
+    color: var(--primary-purple);
+}
+
+.botao-paginacao.ativo {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .grid-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .container-paginacao {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cabecalho-pagina {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .botao-novo {
+        justify-content: center;
+    }
+}

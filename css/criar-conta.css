@@ -1,0 +1,113 @@
+/* Estilos da página de criar conta */
+
+/* Layout principal */
+.pagina-criar-conta {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Cartão de cadastro */
+.cartao-cadastro {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 28rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.titulo-cadastro {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Formulário */
+.grupo-campo {
+  margin-bottom: 1.5rem;
+}
+
+.rotulo-campo {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.entrada-personalizada {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.entrada-personalizada:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 3px rgba(92, 51, 207, 0.1);
+  outline: none;
+}
+
+/* Botão de criar conta */
+.botao-primario {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-purple);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.botao-primario:hover {
+  background-color: #4c2ba9;
+  transform: translateY(-1px);
+}
+
+.botao-primario:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(92, 51, 207, 0.3);
+}
+
+/* Link de login */
+.texto-login {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.link-login {
+  color: var(--primary-purple);
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  transition: color 0.2s;
+}
+
+.link-login:hover {
+  color: #4c2ba9;
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .cartao-cadastro {
+      margin: 1rem;
+      padding: 1.5rem;
+  }
+
+  .titulo-cadastro {
+      font-size: 1.25rem;
+  }
+}
