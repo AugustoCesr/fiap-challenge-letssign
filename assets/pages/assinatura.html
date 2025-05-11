@@ -23,7 +23,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="text-sm text-gray-600">
-                        Etapa 3/4: Assinatura e Autenticação
+                        Etapa 1/2: Assinatura e Autenticação
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 
     <!-- Barra de progresso -->
     <div class="fixed top-16 left-0 right-0 h-1 bg-gray-200">
-        <div class="h-full bg-purple-700 transition-all duration-500" style="width: 75%;"></div>
+        <div class="h-full bg-purple-700 transition-all duration-500" style="width: 50%;"></div>
     </div>
 
     <!-- Conteúdo principal -->
@@ -41,11 +41,8 @@
             <!-- Seção de visualização do documento -->
             <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-6">Visualização do Documento</h2>
-                <div class="visualizacao-pdf bg-gray-100 rounded-lg min-h-[400px] flex items-center justify-center mb-6">
-                    <div class="text-center text-gray-500">
-                        <i class="fas fa-file-pdf text-4xl mb-2"></i>
-                        <p>Carregando documento...</p>
-                    </div>
+                <div id="visualizacao-documento" class="visualizacao-pdf bg-gray-100 rounded-lg min-h-[400px] flex items-center justify-center mb-6">
+                    <iframe src="../../descritivo_da_solucao_LetsSign.pdf" class="w-full h-full" style="min-height:400px;" frameborder="0"></iframe>
                 </div>
             </div>
 
@@ -62,11 +59,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="caixa-camera bg-gray-100 rounded-lg p-6 flex flex-col items-center justify-center">
                             <i class="fas fa-camera text-4xl text-purple-700 mb-2"></i>
-                            <p class="text-sm text-gray-600">Câmera desativada</p>
+                            <p class="text-sm text-gray-600">Câmera ativada</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <p class="text-gray-600 mb-4">Tire uma nova foto para confirmar sua identidade</p>
-                            <button class="botao-primario-personalizado">
+                            <button id="btn-verificacao-facial" class="botao-primario-personalizado">
                                 <i class="fas fa-camera mr-2"></i>
                                 Iniciar Verificação Facial
                             </button>
@@ -85,35 +82,18 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="caixa-voz bg-gray-100 rounded-lg p-6 flex flex-col items-center justify-center">
                             <i class="fas fa-microphone text-4xl text-purple-700 mb-2"></i>
-                            <p class="text-sm text-gray-600">Microfone desativado</p>
+                            <p class="text-sm text-gray-600">Microfone ativado</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <p class="text-gray-600 mb-4">Repita a frase abaixo em voz alta:</p>
                             <div class="bg-purple-50 p-4 rounded-lg mb-4">
                                 <p class="text-purple-700 font-medium">"Eu autorizo a assinatura deste documento."</p>
                             </div>
-                            <button class="botao-primario-personalizado">
+                            <button id="btn-iniciar-gravacao" class="botao-primario-personalizado">
                                 <i class="fas fa-microphone mr-2"></i>
-                                Iniciar Gravação
+                                <span id="gravacao-texto">Iniciar Gravação</span>
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Verificação de localização -->
-                <div class="bg-white rounded-xl shadow-sm p-8">
-                    <div class="flex items-center mb-4">
-                        <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center mr-3">
-                            <span class="font-semibold">3</span>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-800">Verificação de Localização</h3>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center text-gray-600">
-                            <i class="fas fa-location-dot mr-2 text-purple-700"></i>
-                            <span>Verificando sua localização...</span>
-                        </div>
-                        <div class="carregamento-spinner"></div>
                     </div>
                 </div>
 
@@ -121,12 +101,12 @@
                 <div class="bg-white rounded-xl shadow-sm p-8">
                     <div class="flex items-center mb-4">
                         <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center mr-3">
-                            <span class="font-semibold">4</span>
+                            <span class="font-semibold">3</span>
                         </div>
                         <h3 class="text-lg font-semibold text-gray-800">Assinar Documento</h3>
                     </div>
                     <p class="text-gray-600 mb-4">Ao clicar em "Assinar Documento", você confirma que leu e concorda com os termos apresentados.</p>
-                    <button class="botao-primario-personalizado w-full">
+                    <button id="btn-assinar-documento" class="botao-primario-personalizado w-full">
                         <i class="fas fa-signature mr-2"></i>
                         Assinar Documento
                     </button>
