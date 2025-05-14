@@ -183,6 +183,30 @@
     }
 }
 
+/* Adjust input sizes and spacing to match pre-cadastro */
+.entrada-personalizada {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.entrada-personalizada:focus {
+    border-color: #6b21a8;
+    box-shadow: 0 0 0 3px rgba(107, 33, 168, 0.1);
+    outline: none;
+}
+
+.rotulo-campo {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
 /* Métodos de autenticação */
 .cartao-metodo {
     display: flex;
@@ -202,6 +226,7 @@
 .cartao-metodo input[type="radio"] {
     margin-right: 0.75rem;
     margin-top: 0.25rem;
+    accent-color: #6b21a8; /* Make radio button purple */
 }
 
 .info-metodo {
@@ -266,5 +291,45 @@
     .cartao-upload,
     .cartao-formulario {
         padding: 1.5rem;
+    }
+}
+
+/* Upload area when file selected */
+.area-upload.arquivo-selecionado {
+    border-color: #6b21a8;
+    background-color: #f5f3ff;
+}
+
+/* File name display */
+.nome-arquivo-selecionado {
+    font-size: 0.9rem;
+    color: #6b21a8;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Alert container above the submit button */
+#alert-container {
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: none;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

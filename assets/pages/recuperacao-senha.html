@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recuperação de Senha - LetsSign</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/recuperacao-senha.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recuperação de Senha - LetsSign</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/recuperacao-senha.css" />
+    <link rel="stylesheet" href="../css/recuperacao-senha-ajustes.css" />
 </head>
-<body class="bg-gray-50">
-  <!-- Conteúdo principal -->
-  <main class="min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-sm p-8 max-w-md w-full">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Recuperação de Senha</h2>
-      <form class="space-y-6">
-        <!-- Solicitar Token -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-          <input type="email" class="entrada-personalizada w-full" placeholder="Digite seu e-mail" required />
+<body>
+    <!-- Conteúdo Principal -->
+    <main class="pagina-criar-conta">
+        <div class="cartao-cadastro">
+            <h2 class="titulo-cadastro">Recuperação de Senha</h2>
+            
+            <!-- Solicitar Token -->
+            <form>
+                <div class="grupo-campo">
+                    <label class="rotulo-campo">E-mail</label>
+                    <input type="email" class="entrada-personalizada" placeholder="Digite seu e-mail" required />
+                </div>
+                <button type="submit" class="botao-primario">
+                    Enviar Token
+                </button>
+            </form>
+
+            <hr class="divider" />
+
+            <!-- Redefinir Senha -->
+            <form>
+                <div class="grupo-campo">
+                    <label class="rotulo-campo">Token</label>
+                    <input type="text" class="entrada-personalizada" placeholder="Digite o token recebido" required />
+                </div>
+                <div class="grupo-campo">
+                    <label class="rotulo-campo">Nova Senha</label>
+                    <input type="password" class="entrada-personalizada" placeholder="Digite a nova senha" required />
+                </div>
+                <div class="grupo-campo">
+                    <label class="rotulo-campo">Confirmar Senha</label>
+                    <input type="password" class="entrada-personalizada" placeholder="Confirme a nova senha" required />
+                </div>
+                <button type="submit" class="botao-primario">
+                    Redefinir Senha
+                </button>
+            </form>
         </div>
-        <button type="submit" class="botao-primario-personalizado w-full py-3 font-semibold hover:bg-purple-800 transition-colors">
-          Enviar Token
-        </button>
-      </form>
-      <hr class="my-6" />
-      <form class="space-y-6">
-        <!-- Redefinir Senha -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Token</label>
-          <input type="text" class="entrada-personalizada w-full" placeholder="Digite o token recebido" required />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Nova Senha</label>
-          <input type="password" class="entrada-personalizada w-full" placeholder="Digite a nova senha" required />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Confirmar Senha</label>
-          <input type="password" class="entrada-personalizada w-full" placeholder="Confirme a nova senha" required />
-        </div>
-        <button type="submit" class="botao-primario-personalizado w-full py-3 font-semibold hover:bg-purple-800 transition-colors">
-          Redefinir Senha
-        </button>
-      </form>
-    </div>
-  </main>
-  <!-- js -->
-     <script src="../js/app.js"></script>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App JS -->
+    <script src="../js/app.js"></script>
 </body>
 </html>

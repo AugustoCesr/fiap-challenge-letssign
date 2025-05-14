@@ -19,9 +19,9 @@
     <header class="cabecalho-fixo">
         <div class="cabecalho-conteudo">
             <div class="d-flex align-items-center">
-                <a href="dashboard.html" class="texto-marca">
-                    <span class="text-purple">LetsSign</span>
-                    <span class="texto-tagline">é simples assinar</span>
+                <a href="dashboard.html" class="text-decoration-none">
+                    <span class="text-purple text-2xl fw-semibold" style="font-size: 1.5rem;">LetsSign</span>
+                    <span class="text-muted ms-2 fw-medium" style="font-size: 0.75rem;">é simples assinar</span>
                 </a>
             </div>
             <div class="d-flex align-items-center gap-3">
@@ -100,31 +100,31 @@
                     <div class="mb-4">
                         <h3 class="titulo-secao">Endereço</h3>
                         <div class="grid-endereco">
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">CEP</label>
                                 <input type="text" class="entrada-personalizada" placeholder="00000-000">
                             </div>
-                            <div class="grupo-campo col-span-2">
+                            <div style="grid-column: 1 / -1;">
                                 <label class="rotulo-campo">Rua</label>
                                 <input type="text" class="entrada-personalizada" placeholder="Digite o nome da rua">
                             </div>
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">Número</label>
                                 <input type="text" class="entrada-personalizada" placeholder="Nº">
                             </div>
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">Complemento</label>
                                 <input type="text" class="entrada-personalizada" placeholder="Apto, Bloco, etc">
                             </div>
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">Bairro</label>
                                 <input type="text" class="entrada-personalizada" placeholder="Digite o bairro">
                             </div>
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">Cidade</label>
                                 <input type="text" class="entrada-personalizada" placeholder="Digite a cidade">
                             </div>
-                            <div class="grupo-campo">
+                            <div>
                                 <label class="rotulo-campo">Estado</label>
                                 <select class="entrada-personalizada">
                                     <option value="">Selecione o estado</option>
@@ -208,6 +208,7 @@
                     </div>
 
                     <!-- Botão de Envio -->
+                    <div id="alert-container" style="color: red; margin-bottom: 1rem; font-weight: 600;"></div>
                     <button id="btn-enviar" type="submit" class="botao-enviar">
                         Avançar
                         <i class="fas fa-arrow-right ms-2"></i>

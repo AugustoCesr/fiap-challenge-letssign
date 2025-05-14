@@ -1,0 +1,13 @@
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+.card-padding {
+    padding: 2rem !important;
+}
+.rounded-custom {
+    border-radius: 1rem !important;
+}
+.botao-primario-personalizado.gravando {
+    background-color: #991b1b !important;
+    border-color: #991b1b !important;
+}

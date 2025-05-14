@@ -1,90 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil - LetsSign</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/perfil.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil - LetsSign</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/perfil.css" />
+    <link rel="stylesheet" href="../css/perfil-ajustes.css" />
 </head>
-<body class="bg-gray-50">
-  <!-- Cabeçalho -->
-  <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <a href="dashboard.html" class="text-2xl font-semibold">
-            <span class="text-purple-700">LetsSign</span>
-            <span class="text-sm text-gray-600 ml-2">é simples assinar</span>
-          </a>
+<body class="bg-light">
+    <!-- Cabeçalho -->
+    <header class="fixed-top bg-white shadow-sm">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between" style="height: 64px;">
+                <div class="d-flex align-items-center">
+                    <a href="dashboard.html" class="text-decoration-none">
+                        <span class="text-purple text-2xl fw-semibold" style="font-size: 1.5rem;">LetsSign</span>
+                        <span class="text-muted ms-2 fw-medium" style="font-size: 0.75rem;">é simples assinar</span>
+                    </a>
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    <button class="d-flex align-items-center text-dark border-0 bg-transparent">
+                        <i class="fas fa-user me-2"></i>
+                        <span>Perfil</span>
+                    </button>
+                    <button class="text-dark border-0 bg-transparent">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="flex items-center space-x-4">
-          <button class="flex items-center text-gray-700 hover:text-purple-700">
-            <i class="fas fa-user mr-2"></i>
-            <span>Perfil</span>
-          </button>
-          <button class="text-gray-700 hover:text-purple-700">
-            <i class="fas fa-sign-out-alt"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Conteúdo principal -->
-  <main class="pt-20 min-h-screen">
-    <div class="container mx-auto px-4 max-w-3xl py-8">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Editar Perfil</h2>
-      <form class="bg-white rounded-xl shadow-sm p-8 space-y-6">
-        <!-- Foto do Usuário -->
-        <div class="flex flex-col items-center">
-          <div class="avatar-container flex items-center justify-center bg-gray-200 text-purple-700 text-6xl">
-            <i class="fas fa-user"></i>
-          </div>
-          <button id="btn-alterar-foto" type="button" class="botao-alterar-foto">Alterar Foto</button>
-        </div>
+    <!-- Conteúdo principal -->
+    <main class="pt-5 min-vh-100">
+        <div class="container py-5" style="max-width: 768px;">
+            <h2 class="fs-4 fw-semibold text-dark mb-4">Editar Perfil</h2>
+            <form class="bg-white rounded-custom shadow-sm card-padding">
+                <div class="d-flex flex-column">
+                    <!-- Foto do Usuário -->
+                    <div class="avatar-section d-flex flex-column align-items-center">
+                        <div class="avatar-container custom-avatar d-flex align-items-center justify-content-center bg-light text-purple mb-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <button id="btn-alterar-foto" type="button" class="botao-alterar-foto">
+                            Alterar Foto
+                        </button>
+                    </div>
 
-        <!-- Dados Pessoais -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
-          <input type="text" class="entrada-personalizada w-full" value="João Silva" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-          <input type="email" class="entrada-personalizada w-full" value="joao.silva@email.com" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
-          <input type="tel" class="entrada-personalizada w-full" value="(11) 91234-5678" />
-        </div>
+                    <!-- Dados Pessoais -->
+                    <div class="form-group">
+                        <label class="form-label fw-medium text-dark">Nome Completo</label>
+                        <input type="text" class="entrada-personalizada" value="João Silva" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label fw-medium text-dark">E-mail</label>
+                        <input type="email" class="entrada-personalizada" value="joao.silva@email.com" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label fw-medium text-dark">Telefone</label>
+                        <input type="tel" class="entrada-personalizada" value="(11) 91234-5678" />
+                    </div>
 
-        <!-- Preferências -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Idioma</label>
-          <select class="entrada-personalizada w-full">
-            <option value="pt" selected>Português</option>
-            <option value="en">Inglês</option>
-            <option value="es">Espanhol</option>
-          </select>
-        </div>
+                    <!-- Preferências -->
+                    <div class="form-group">
+                        <label class="form-label fw-medium text-dark">Idioma</label>
+                        <select class="entrada-personalizada">
+                            <option value="pt" selected>Português</option>
+                            <option value="en">Inglês</option>
+                            <option value="es">Espanhol</option>
+                        </select>
+                    </div>
 
-        <div>
-          <label class="flex items-center space-x-2">
-            <input type="checkbox" class="checkbox-formulario" checked />
-            <span>Receber notificações por e-mail</span>
-          </label>
-        </div>
+                    <div class="form-group">
+                        <label class="d-flex align-items-center gap-2">
+                            <input type="checkbox" class="checkbox-formulario" checked />
+                            <span>Receber notificações por e-mail</span>
+                        </label>
+                    </div>
 
-        <button id="btn-salvar-alteracoes" type="submit" class="botao-primario-personalizado w-full py-3 font-semibold hover:bg-purple-800 transition-colors">
-          Salvar Alterações
-        </button>
-      </form>
-    </div>
-  </main>
-  <!-- js -->
-     <script src="../js/app.js"></script>
+                    <button id="btn-salvar-alteracoes" type="submit" class="botao-primario-personalizado py-3 fw-semibold w-100">
+                        Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App JS -->
+    <script src="../js/app.js"></script>
 </body>
 </html>

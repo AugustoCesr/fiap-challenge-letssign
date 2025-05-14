@@ -1,0 +1,25 @@
+/* Ajustes */
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+.card-padding {
+    padding: 2rem !important;
+}
+.rounded-custom {
+    border-radius: 1rem !important;
+}
+.form-group {
+    margin-bottom: 1.5rem !important;
+}
+.form-group:last-child {
+    margin-bottom: 0 !important;
+}
+.form-label {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+}
+.divider {
+    margin: 1.5rem 0 !important;
+    border-color: #e5e7eb !important;
+    opacity: 0.8 !important;
+}

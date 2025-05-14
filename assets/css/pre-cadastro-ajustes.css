@@ -1,0 +1,36 @@
+/* Ajustes */
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+.card-padding {
+    padding: 2rem !important;
+}
+.rounded-custom {
+    border-radius: 1rem !important;
+}
+.form-section {
+    margin-bottom: 2rem !important;
+}
+.form-section:last-child {
+    margin-bottom: 0 !important;
+}
+.form-section-title {
+    font-size: 1.125rem !important;
+    margin-bottom: 1rem !important;
+}
+.form-label {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+}
+.upload-box {
+    min-height: 160px !important;
+    transition: all 0.3s ease !important;
+    background-color: rgba(92, 51, 207, 0.02) !important;
+}
+.upload-box:hover {
+    background-color: rgba(92, 51, 207, 0.05) !important;
+    border-color: var(--primary-purple) !important;
+}
+.biometric-box {
+    min-height: 180px !important;
+}

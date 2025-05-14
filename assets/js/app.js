@@ -2,26 +2,50 @@
     "use strict";
 
     // Função para mostrar mensagens de alerta estilizadas
-    function mostrarAlerta(mensagem, tipo = 'success') {
+    function mostrarAlerta(mensagem, tipo = 'success', targetElement = null) {
         const div = document.createElement('div');
         div.className = `alerta alerta-${tipo}`;
         div.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            position: ${targetElement ? 'absolute' : 'fixed'};
+            ${targetElement ? '' : 'top: 20px; right: 20px;'}
             padding: 15px 25px;
             border-radius: 5px;
             z-index: 9999;
-            animation: slideIn 0.5s ease-in-out;
+            background-color: ${tipo === 'success' ? '#4CAF50' : '#f44336'};
+            color: white;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            word-wrap: break-word;
         `;
-        div.style.backgroundColor = tipo === 'success' ? '#4CAF50' : '#f44336';
-        div.style.color = 'white';
+
+        if (targetElement) {
+            // Position the alert above the target element
+            const rect = targetElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            div.style.top = (rect.top + scrollTop - 40) + 'px';
+            div.style.left = (rect.left + scrollLeft + rect.width / 2) + 'px';
+            div.style.transform = 'translate(-50%, 10px)';
+            div.style.pointerEvents = 'auto';
+        }
+
         div.textContent = mensagem;
         document.body.appendChild(div);
 
+        // Trigger reflow to enable transition
+        void div.offsetWidth;
+        div.style.opacity = '1';
+        div.style.transform = targetElement ? 'translate(-50%, 0)' : 'translateY(0)';
+
         setTimeout(() => {
-            div.style.animation = 'slideOut 0.5s ease-in-out';
-            setTimeout(() => div.remove(), 500);
+            div.style.opacity = '0';
+            div.style.transform = targetElement ? 'translate(-50%, 10px)' : 'translateY(10px)';
+            setTimeout(() => div.remove(), 300);
         }, 3000);
     }
 
@@ -450,22 +474,27 @@
     
             let statusTimeout = setTimeout(() => {
                 statusValidationDiv.classList.remove('status-verificando');
-                statusValidationDiv.classList.add('status-verificado');
+                statusValidationDiv.classList.add('bg-success-subtle');
                 const p = statusValidationDiv.querySelector('p');
-                p.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Compatibilidade verificada!';
-                p.classList.remove('text-yellow-700');
-                p.classList.add('text-green-700');
+                p.innerHTML = '<i class="fas fa-check-circle me-2"></i>Compatibilidade verificada!';
+                p.style.color = '#198754'; // Bootstrap success color
             }, 6000);
     
             // Add "Solicitar Nova Verificação" button above "Concluir" button and its functionality
             const statusCard = document.querySelector('.cartao-localizacao:last-child');
             if (statusCard) {
                 const botaoNovaVerificacao = document.createElement('button');
-                botaoNovaVerificacao.className = 'botao-secundario-personalizado w-full mb-4 flex items-center justify-center text-purple-700 border border-purple-700 rounded-lg px-4 py-2 text-base hover:bg-purple-50 hover:border-purple-700';
-                botaoNovaVerificacao.innerHTML = '<i class="fas fa-redo mr-2"></i>Solicitar Nova Verificação';
+botaoNovaVerificacao.className = 'botao-secundario-personalizado flex items-center justify-center text-purple-800 border-2 border-purple-600 rounded-md px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-purple-400 hover:shadow-sm';
+                botaoNovaVerificacao.style.width = '100%';
+                botaoNovaVerificacao.style.margin = '24px auto 16px auto';
+botaoNovaVerificacao.innerHTML = '<i class="fas fa-redo" style="margin-right: 8px; color: #6b21a8;"></i><span style="font-size: 1rem; color: #6b21a8;">Solicitar Nova Verificação</span>';
+botaoNovaVerificacao.style.borderColor = '#6b21a8';
     
                 const botaoConcluir = document.createElement('button');
-                botaoConcluir.className = 'botao-primario-personalizado w-full';
+                botaoConcluir.className = 'botao-primario-personalizado bg-purple-700 text-white rounded-md px-6 py-3 text-sm font-semibold transition-all duration-200 hover:bg-purple-800 hover:shadow-sm';
+                botaoConcluir.style.width = '100%';
+                botaoConcluir.style.margin = '0 auto';
+                botaoConcluir.style.display = 'block';
                 botaoConcluir.textContent = 'Concluir';
                 botaoConcluir.disabled = true;
     
@@ -534,172 +563,6 @@
             }
         }
         }
-
-    // Envio de Documento
-    function inicializarEnvioDocumento() {
-        const dropZone = document.getElementById('area-upload');
-        const inputArquivo = document.getElementById('documentUpload');
-        const form = document.getElementById('sendDocumentForm');
-        const botaoEnviar = document.getElementById('btn-enviar');
-
-        // Criar container para preview
-        const previewContainer = document.createElement('div');
-        previewContainer.style.marginTop = '10px';
-        dropZone.appendChild(previewContainer);
-
-        // Criar barra de progresso
-        const barraContainer = document.createElement('div');
-        barraContainer.style.cssText = `
-            width: 100%;
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            margin-top: 15px;
-            overflow: hidden;
-            display: none;
-        `;
-
-        const barra = document.createElement('div');
-        barra.style.cssText = `
-            width: 0%;
-            height: 100%;
-            background: #6c63ff;
-            border-radius: 4px;
-            transition: width 0.5s linear;
-        `;
-
-        barraContainer.appendChild(barra);
-        dropZone.appendChild(barraContainer);
-
-        function validarArquivo(arquivo) {
-            const tiposPermitidos = ['application/pdf', 'image/jpeg', 'image/png'];
-            const tamanhoMaximo = 10 * 1024 * 1024; // 10MB
-
-            if (!tiposPermitidos.includes(arquivo.type)) {
-                mostrarAlerta('Tipo de arquivo inválido. Use PDF, JPG ou PNG.', 'error');
-                return false;
-            }
-
-            if (arquivo.size > tamanhoMaximo) {
-                mostrarAlerta('Arquivo muito grande. Máximo 10MB.', 'error');
-                return false;
-            }
-
-            return true;
-        }
-
-        function mostrarPreview(arquivo) {
-            previewContainer.innerHTML = '';
-
-            const nome = document.createElement('p');
-            nome.textContent = `Arquivo selecionado: ${arquivo.name}`;
-            previewContainer.appendChild(nome);
-
-            if (arquivo.type.startsWith('image/')) {
-                const img = document.createElement('img');
-                img.src = URL.createObjectURL(arquivo);
-                img.style.maxWidth = '150px';
-                img.style.marginTop = '10px';
-                previewContainer.appendChild(img);
-            } else if (arquivo.type === 'application/pdf') {
-                const icone = document.createElement('i');
-                icone.className = 'fas fa-file-pdf fa-3x';
-                icone.style.color = '#d9534f';
-                icone.style.marginTop = '10px';
-                previewContainer.appendChild(icone);
-            }
-        }
-
-        function simularUpload() {
-            barraContainer.style.display = 'block';
-            barra.style.width = '0%';
-            botaoEnviar.disabled = true;
-
-            let progresso = 0;
-            const intervalo = setInterval(() => {
-                progresso += 3;
-                barra.style.width = `${progresso}%`;
-
-                if (progresso >= 100) {
-                    clearInterval(intervalo);
-                    botaoEnviar.disabled = false;
-                }
-            }, 40);
-        }
-
-        if (dropZone && inputArquivo) {
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropZone.addEventListener(eventName, preventDefaults, false);
-            });
-
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-
-            dropZone.addEventListener('drop', handleDrop, false);
-            inputArquivo.addEventListener('change', handleFileSelect);
-
-            function handleDrop(e) {
-                const dt = e.dataTransfer;
-                const files = dt.files;
-                handleFiles(files);
-            }
-
-            function handleFileSelect(e) {
-                const files = e.target.files;
-                handleFiles(files);
-            }
-
-            function handleFiles(files) {
-                if (files[0]) {
-                    const file = files[0];
-                    if (validarArquivo(file)) {
-                        mostrarPreview(file);
-                        simularUpload();
-                        simularCarregamento(() => {
-                            mostrarAlerta('Arquivo carregado com sucesso!');
-                        });
-                    }
-                }
-            }
-        }
-
-        // Autopreenchimento de CEP
-        const inputCep = document.querySelector('input[name="cep"]');
-        if (inputCep) {
-            inputCep.addEventListener('blur', () => {
-                const cep = inputCep.value.replace(/\D/g, '');
-                if (cep.length === 8) {
-                    simularCarregamento(() => {
-                        // Simular preenchimento de endereço
-                        document.querySelector('input[name="rua"]').value = 'Rua Exemplo';
-                        document.querySelector('input[name="bairro"]').value = 'Bairro Exemplo';
-                        document.querySelector('input[name="cidade"]').value = 'Cidade Exemplo';
-                        document.querySelector('input[name="estado"]').value = 'SP';
-                    });
-                }
-            });
-        }
-
-        // Botão Avançar
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const campos = form.querySelectorAll('input[required]');
-                let valido = true;
-                campos.forEach(campo => {
-                    if (!campo.value.trim()) valido = false;
-                });
-
-                if (valido) {
-                    window.location.href = 'pre-cadastro.html';
-                } else {
-                    mostrarAlerta('Preencha todos os campos obrigatórios', 'error');
-                }
-            });
-        }
-    }
 
     // Pré-Cadastro
     function inicializarPreCadastro() {
@@ -1076,4 +939,177 @@
         }
     }
 
+    // Inicializar Envio Documento
+    function inicializarEnvioDocumento() {
+        const areaUpload = document.querySelector('.area-upload');
+        const inputFile = document.getElementById('documentUpload');
+
+        if (!areaUpload || !inputFile) return;
+
+        // Create element to show selected file name
+        let fileNameDisplay = document.createElement('p');
+        fileNameDisplay.className = 'nome-arquivo-selecionado';
+        fileNameDisplay.style.marginTop = '10px';
+        fileNameDisplay.style.color = '#6b21a8';
+        fileNameDisplay.style.fontWeight = '600';
+        areaUpload.appendChild(fileNameDisplay);
+
+        // Click on areaUpload triggers file input click
+        areaUpload.addEventListener('click', () => {
+            inputFile.click();
+        });
+
+        // Handle file selection
+        inputFile.addEventListener('change', () => {
+            const file = inputFile.files[0];
+            if (file) {
+                // Simulate loading with progress bar inside upload area
+                fileNameDisplay.textContent = '';
+                areaUpload.classList.remove('arquivo-selecionado');
+
+                // Create progress bar container
+                let progressBarContainer = document.createElement('div');
+                progressBarContainer.className = 'progress-bar-container';
+                progressBarContainer.style.position = 'relative';
+                progressBarContainer.style.width = '100%';
+                progressBarContainer.style.height = '6px';
+                progressBarContainer.style.backgroundColor = '#e5e7eb';
+                progressBarContainer.style.borderRadius = '4px';
+                progressBarContainer.style.marginTop = '10px';
+
+                // Create progress bar
+                let progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                progressBar.style.width = '0%';
+                progressBar.style.height = '100%';
+                progressBar.style.backgroundColor = '#6b21a8';
+                progressBar.style.borderRadius = '4px';
+                progressBar.style.transition = 'width 0.3s ease';
+
+                progressBarContainer.appendChild(progressBar);
+
+                // Remove existing progress bar or file name display if any
+                const existingProgress = areaUpload.querySelector('.progress-bar-container');
+                if (existingProgress) {
+                    existingProgress.remove();
+                }
+                const existingFileName = areaUpload.querySelector('.nome-arquivo-selecionado');
+                if (existingFileName) {
+                    existingFileName.textContent = '';
+                }
+
+                areaUpload.appendChild(progressBarContainer);
+
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    progressBar.style.width = progress + '%';
+
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        progressBarContainer.remove();
+                        mostrarAlerta(`Arquivo "${file.name}" carregado com sucesso!`);
+                        fileNameDisplay.textContent = file.name;
+                        areaUpload.classList.add('arquivo-selecionado');
+                    }
+                }, 100);
+            } else {
+                fileNameDisplay.textContent = '';
+                areaUpload.classList.remove('arquivo-selecionado');
+            }
+        });
+
+        // Validation and navigation on form submit
+        const form = document.getElementById('sendDocumentForm');
+        const alertContainer = document.getElementById('alert-container');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alertContainer.textContent = '';
+
+            // Validate file input
+            if (!inputFile.files || inputFile.files.length === 0) {
+            alertContainer.textContent = 'Por favor, selecione um arquivo PDF.';
+            alertContainer.style.display = 'block';
+            return;
+        }
+
+            // Validate text inputs and select
+            const textInputs = form.querySelectorAll('input[type="text"], input[type="email"]');
+            for (const input of textInputs) {
+                if (!input.value.trim()) {
+            alertContainer.textContent = 'Por favor, preencha todos os campos de texto.';
+            alertContainer.style.display = 'block';
+            return;
+        }
+            }
+
+            const select = form.querySelector('select.entrada-personalizada');
+            if (!select.value) {
+            alertContainer.textContent = 'Por favor, selecione um estado.';
+            alertContainer.style.display = 'block';
+            return;
+        }
+
+            // Validate radio buttons
+            const radios = form.querySelectorAll('input[name="metodo-autenticacao"]');
+            let radioChecked = false;
+            for (const radio of radios) {
+                if (radio.checked) {
+                    radioChecked = true;
+                    break;
+                }
+            }
+            if (!radioChecked) {
+            alertContainer.textContent = 'Por favor, selecione um método de autenticação.';
+            alertContainer.style.display = 'block';
+            return;
+        }
+
+            // If all validations pass, navigate to pre-cadastro.html
+            window.location.href = 'pre-cadastro.html';
+        });
+
+        // CEP auto-fill with API call and validation for address completion
+        const inputCep = document.getElementById('cep');
+        if (inputCep) {
+            inputCep.addEventListener('blur', () => {
+                const cep = inputCep.value.replace(/\D/g, '');
+                if (cep.length !== 8) {
+                    mostrarAlerta('CEP inválido. Deve conter 8 dígitos.', 'error');
+                    return;
+                }
+                // Use a proxy to avoid mixed content issues when serving over HTTPS
+                // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                // const targetUrl = `http://viacep.com.br/ws/${cep}/json/`;
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na requisição do CEP');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.erro) {
+                            mostrarAlerta('CEP não encontrado.', 'error');
+                            return;
+                        }
+                        // Fill address fields
+                        const ruaInput = document.querySelector('input[name="rua"], input[placeholder*="rua"], input[id*="rua"]');
+                        const bairroInput = document.querySelector('input[name="bairro"], input[placeholder*="bairro"], input[id*="bairro"]');
+                        const cidadeInput = document.querySelector('input[name="cidade"], input[placeholder*="cidade"], input[id*="cidade"]');
+                        const estadoSelect = document.querySelector('select[name="estado"], select[id*="estado"]');
+
+                        if (ruaInput) ruaInput.value = data.logradouro || '';
+                        if (bairroInput) bairroInput.value = data.bairro || '';
+                        if (cidadeInput) cidadeInput.value = data.localidade || '';
+                        if (estadoSelect) estadoSelect.value = data.uf || '';
+                    })
+                    .catch((error) => {
+                        console.error('Erro ao buscar CEP:', error);
+                        mostrarAlerta('Erro ao buscar CEP.', 'error');
+                    });
+            });
+        }
+    }
 })();
