@@ -1,0 +1,212 @@
+:root {
+    --roxo-primario: #6b21a8;
+    --roxo-escuro: #6b21a8;
+    --roxo-claro: #f5f3ff;
+    --texto-cinza: #6b7280;
+    --fundo-cinza: #f9fafb;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fundo-cinza);
+    min-height: 100vh;
+}
+
+/* Estilos do Cabeçalho */
+.cabecalho {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Cartão de Localização */
+.cartao-localizacao {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.cartao-localizacao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Título do Cartão */
+.titulo-cartao {
+    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Container do Mapa */
+.container-mapa {
+    position: relative;
+    overflow: hidden;
+    min-height: 450px;
+    border-radius: 0.75rem;
+    background-color: #f3f4f6;
+}
+
+.container-mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Detalhes de Localização */
+.detalhes-localizacao p {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.detalhes-localizacao p:last-child {
+    margin-bottom: 0;
+}
+
+/* Status de Verificação */
+ .status-verificando {
+    background-color: #FEF3C7;
+    color: #92400E;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Spinner de Carregamento */
+.carregamento-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #6b21a8;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Status Indicators */
+.indicador-status {
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.status-verificando {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+/* Animações */
+.aparecer-subindo {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Resultado da Validação */
+.resultado-validacao {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: aparecer 0.3s ease forwards;
+}
+
+.resultado-validacao.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Conteúdo Principal */
+.conteudo-principal {
+    padding-top: 84px;
+}
+
+/* Ícone Roxo */
+.icone-roxo {
+    color: var(--roxo-primario);
+}
+
+/* Botões */
+.btn-verificacao {
+    background: transparent;
+    border: 2px solid #6b21a8;
+    color: #6b21a8;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.75rem 1rem;
+}
+
+.btn-verificacao i,
+.btn-verificacao span {
+    color: #6b21a8;
+}
+
+.btn-verificacao:hover {
+    background-color: #f3e8ff;
+    border-color: #6b21a8;
+    border-width: 2px;
+    transform: translateY(-1px);
+}
+
+.btn-concluir {
+    background-color: #6b21a8;
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(107, 33, 168, 0.2);
+    padding: 1rem 1.5rem;
+}
+
+.btn-concluir:hover:not(:disabled) {
+    background-color: #581c8c;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(107, 33, 168, 0.25);
+}
+
+.btn-concluir:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-concluir:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(107, 33, 168, 0.2);
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 992px) {
+    .container-mapa {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+            
+    .cartao-localizacao {
+        padding: 1.25rem;
+    }
+}
