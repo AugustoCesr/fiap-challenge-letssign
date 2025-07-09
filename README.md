@@ -19,4 +19,4 @@ o front-end da aplicação web simulando as funções de validações nas telas 
 - `JavaScript`
 - `Bootstrap`
 
-<br>:construction: Projeto entregue mas ainda não finalizado, falta algumas peguenas melhorias :construction:
+<br>:construction: Projeto entregue mas ainda não finalizado, falta algumas pequenas melhorias :construction:
